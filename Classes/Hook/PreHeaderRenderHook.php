@@ -7,8 +7,9 @@ class Tx_beskin_Be_PreHeaderRenderHook {
 
 		$extConfigs = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['beskin']);
 		$paths = array ();
+
 		if(t3lib_div::getFileAbsFileName($extConfigs['cssFile'])) {
-			$paths['cssFile'] = t3lib_div::getFileAbsFileName($extConfigs['cssFile'], TRUE, TRUE);
+			$paths['cssFile'] = t3lib_div::getFileAbsFileName($extConfigs['cssFile']);
 			$paths = t3lib_div::removePrefixPathFromList($paths,PATH_site);
 			$pagerenderer->addCssFile('../' . $paths['cssFile']);
 		}
