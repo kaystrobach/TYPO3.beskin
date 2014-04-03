@@ -3,9 +3,10 @@
 
 if(TYPO3_MODE == 'BE') {
 	/**
-	 * add Stylesheets
+	 * add Stylesheets for outer frame
 	 */	 	
-	$GLOBALS['TYPO3_CONF_VARS']['typo3/backend.php']['additionalBackendItems'][] = t3lib_extMgm::extPath('beskin').'addStylesheet.php';
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/template.php']['preHeaderRenderHook'][] = 'EXT:beskin/Classes/Hook/PreHeaderRenderHook.php:Tx_beskin_Be_PreHeaderRenderHook->main';
+
 	/**
 	 * make loginscreen configurable
 	 */	 	
@@ -18,9 +19,16 @@ if(TYPO3_MODE == 'BE') {
 		#$GLOBALS['TBE_STYLES']['loginBoxImage_rotationFolder'] = $t['loginLogoPath'];
 		#$GLOBALS['TBE_STYLES']['loginBoxImage_rotationFolder'] = t3lib_div::getFileAbsFileName($t['loginLogoPath'], TRUE);
 	}
+	/**
+	 * change backendlogo
+	 */
+	$paths = array ();
+	if(t3lib_div::getFileAbsFileName($t['logo'])) {
+		$paths['logo']    = t3lib_div::getFileAbsFileName($t['logo']);
+	}
+	$paths = t3lib_div::removePrefixPathFromList($paths,PATH_site);
+	$GLOBALS['TBE_STYLES']['logo'] = '../'.$paths['logo'];
+
 }
-
-
-
 
 ?>
