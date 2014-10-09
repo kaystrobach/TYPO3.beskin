@@ -13,7 +13,5 @@ class Tx_beskin_Be_PreHeaderRenderHook {
 			$paths = t3lib_div::removePrefixPathFromList($paths,PATH_site);
 			$pagerenderer->addCssFile('../' . $paths['cssFile']);
 		}
-
-
 	}
 }
