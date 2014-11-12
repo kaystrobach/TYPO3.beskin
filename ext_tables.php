@@ -12,13 +12,18 @@ if(TYPO3_MODE == 'BE') {
 	 */	 	
 	$t = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['beskin']);
 	if(is_readable(t3lib_div::getFileAbsFileName($t['logintemplate']))) {
-		$GLOBALS['TBE_STYLES']['htmlTemplates']['templates/login.html'] = t3lib_div::getFileAbsFileName($t['logintemplate']);
+		$loginFileName = t3lib_div::getFileAbsFileName($t['logintemplate']);
+		// pre 6.x
+		$GLOBALS['TBE_STYLES']['htmlTemplates']['templates/login.html'] = $loginFileName;
+		// 6.x+
+		$GLOBALS['TBE_STYLES']['htmlTemplates']['EXT:backend/Resources/Private/Templates/login.html'] = $loginFileName;
 	}
 	if($t['loginLogoPath'] !== '') {
 		$GLOBALS['TBE_STYLES']['logo_login'] = $t['loginLogoPath'];
 		#$GLOBALS['TBE_STYLES']['loginBoxImage_rotationFolder'] = $t['loginLogoPath'];
 		#$GLOBALS['TBE_STYLES']['loginBoxImage_rotationFolder'] = t3lib_div::getFileAbsFileName($t['loginLogoPath'], TRUE);
 	}
+
 	/**
 	 * change backendlogo
 	 */
