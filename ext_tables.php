@@ -27,7 +27,7 @@ if(TYPO3_MODE == 'BE') {
 	/**
 	 * change favicon
 	 */
-	if(is_readable(t3lib_div::getFileAbsFileName($t['favicon']))) {
+	if($t['favicon'] !== '') {
 		$GLOBALS['TBE_STYLES']['skinImg']['gfx/favicon.ico'] = array(
 			0 => $t['favicon'],
 			1 => 'width="16" height="16"'
