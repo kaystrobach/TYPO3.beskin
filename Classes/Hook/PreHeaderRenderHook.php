@@ -13,5 +13,9 @@ class Tx_beskin_Be_PreHeaderRenderHook {
 			$paths = t3lib_div::removePrefixPathFromList($paths,PATH_site);
 			$pagerenderer->addCssFile('../' . $paths['cssFile']);
 		}
+
+		if(t3lib_div::getFileAbsFileName($extConfigs['loginstylesheet'])) {
+			$pagerenderer->addCssFile('../' . $extConfigs['loginstylesheet']);
+		}
 	}
 }

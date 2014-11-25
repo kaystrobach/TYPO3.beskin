@@ -16,5 +16,8 @@ logintemplate = EXT:t3skin/templates/login.html
 # cat=login/basic; type=string; label=Folder where the logos for login image rotation are stored
 loginLogoPath =
 
+# cat=login/basic; type=string; label=Login stylesheet
+loginstylesheet =
+
 # cat=backend style/basic; type=string; label=favicon of the TYPO3 Backend
 favicon = 
