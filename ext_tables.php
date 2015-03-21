@@ -11,8 +11,8 @@ if(TYPO3_MODE == 'BE') {
 	 * make loginscreen configurable
 	 */	 	
 	$t = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['beskin']);
-	if(is_readable(t3lib_div::getFileAbsFileName($t['logintemplate']))) {
-		$loginFileName = t3lib_div::getFileAbsFileName($t['logintemplate']);
+	if(is_readable(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($t['logintemplate']))) {
+		$loginFileName = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($t['logintemplate']);
 		// pre 6.x
 		$GLOBALS['TBE_STYLES']['htmlTemplates']['templates/login.html'] = $loginFileName;
 		// 6.x+
@@ -38,10 +38,10 @@ if(TYPO3_MODE == 'BE') {
 	 * change backendlogo
 	 */
 	$paths = array ();
-	if(t3lib_div::getFileAbsFileName($t['logo'])) {
-		$paths['logo']    = t3lib_div::getFileAbsFileName($t['logo']);
+	if(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($t['logo'])) {
+		$paths['logo']    = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($t['logo']);
 	}
-	$paths = t3lib_div::removePrefixPathFromList($paths,PATH_site);
+	$paths = \TYPO3\CMS\Core\Utility\GeneralUtility::removePrefixPathFromList($paths,PATH_site);
 	$GLOBALS['TBE_STYLES']['logo'] = '../'.$paths['logo'];
 
 }
